@@ -1,14 +1,10 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { Search, Filter } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import {
-  setViewMode,
-  setSearchQuery,
-  setFilterStatus,
-} from "../store/slices/patientSlice";
-import PatientCard from "../components/patients/PatientCard";
-import PatientRow from "../components/patients/PatientRow";
-import ViewToggle from "../components/patients/ViewToggle";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { setViewMode, setSearchQuery, setFilterStatus } from "../patientSlice";
+import PatientCard from "../components/PatientCard";
+import PatientRow from "../components/PatientRow";
+import ViewToggle from "../components/ViewToggle";
 import styles from "./PatientsPage.module.css";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 
@@ -27,16 +23,29 @@ export default function PatientsPage() {
   const highlightRef = useRef<HTMLDivElement | null>(null);
 
   const filtered = useMemo(() => {
+    const query = searchQuery.toLowerCase();
     return patients.filter((p) => {
       const matchSearch =
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.condition.toLowerCase().includes(searchQuery.toLowerCase());
+        p.name.toLowerCase().includes(query) ||
+        p.id.toLowerCase().includes(query) ||
+        p.condition.toLowerCase().includes(query);
       const matchStatus = filterStatus === "All" || p.status === filterStatus;
       return matchSearch && matchStatus;
     });
   }, [patients, searchQuery, filterStatus]);
 
+  const handleViewChange = useCallback(
+    (m: "grid" | "list") => {
+      dispatch(setViewMode(m));
+    },
+    [dispatch],
+  );
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(setSearchQuery(e.target.value));
+    },
+    [dispatch],
+  );
   // On mount: apply status filter from URL
   useEffect(() => {
     const status = searchParams.get("status");
@@ -93,10 +102,7 @@ export default function PatientsPage() {
             {filterStatus !== "All" ? `· ${filterStatus}` : "total"}
           </p>
         </div>
-        <ViewToggle
-          mode={viewMode}
-          onChange={(m) => dispatch(setViewMode(m))}
-        />
+        <ViewToggle mode={viewMode} onChange={handleViewChange} />
       </div>
 
       <div className={styles.controls}>
@@ -106,7 +112,7 @@ export default function PatientsPage() {
             type="text"
             placeholder="Search by name, ID, or condition…"
             value={searchQuery}
-            onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+            onChange={handleSearchChange}
           />
         </div>
         <div className={styles.filters}>

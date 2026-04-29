@@ -317,6 +317,27 @@ git push -u origin main
 
 ---
 
+## Architecture & Scalability
+
+The project currently follows a modular structure separating components, pages, and state.
+
+For scalability and micro-frontend readiness, the application can be refactored into a feature-based architecture:
+
+- features/auth
+- features/patients
+- features/analytics
+- features/notifications
+
+Each feature would encapsulate:
+
+- UI components
+- state (Redux slice)
+- business logic
+
+This enables future adoption of micro-frontend patterns such as Module Federation, where each feature can be independently developed and deployed.
+
+---
+
 ## 🎨 Design System
 
 All tokens are in `src/styles/global.css` as CSS variables:

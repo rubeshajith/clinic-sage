@@ -5,7 +5,7 @@ import AppLayout from "./components/layout/AppLayout";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-import PatientsPage from "./pages/PatientsPage";
+import PatientsPage from "./features/patients/page/PatientsPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import "./styles/global.css";

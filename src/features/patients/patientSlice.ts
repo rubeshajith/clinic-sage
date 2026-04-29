@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PatientState } from "../../types";
-import { MOCK_PATIENTS } from "../../utils/mockData";
+import { MOCK_PATIENTS } from "./patientData";
 
 const initialState: PatientState = {
   patients: MOCK_PATIENTS,

@@ -1,5 +1,5 @@
 import { Droplet } from "lucide-react";
-import { Patient } from "../../types";
+import { Patient } from "../../../types";
 import styles from "./PatientRow.module.css";
 
 interface Props {
