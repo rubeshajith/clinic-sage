@@ -1,0 +1,118 @@
+import { Appointment, DoctorSchedule } from "../types/appointments";
+
+export const MOCK_APPOINTMENTS: Appointment[] = [
+  {
+    id: "APT001",
+    patientName: "Arjun Mehta",
+    patientId: "#1298035",
+    avatar: "A",
+    dateTime: "2025-04-20T21:32:12",
+    age: 45,
+    dob: "15/03/1980",
+    insurance: "Prudential",
+  },
+  {
+    id: "APT002",
+    patientName: "Sunita Rao",
+    patientId: "#1298034",
+    avatar: "S",
+    dateTime: "2025-04-20T10:21:31",
+    age: 62,
+    dob: "12/01/1963",
+    insurance: "AIA",
+  },
+  {
+    id: "APT003",
+    patientName: "Vikram Patel",
+    patientId: "#1298033",
+    avatar: "V",
+    dateTime: "2025-04-18T08:12:24",
+    age: 38,
+    dob: "04/12/1986",
+    insurance: "AIA",
+  },
+  {
+    id: "APT004",
+    patientName: "Deepa Krishnan",
+    patientId: "#1298032",
+    avatar: "D",
+    dateTime: "2025-04-17T14:56:45",
+    age: 71,
+    dob: "21/10/1953",
+    insurance: "FWD",
+  },
+  {
+    id: "APT005",
+    patientName: "Rajan Bose",
+    patientId: "#1298031",
+    avatar: "R",
+    dateTime: "2025-04-15T22:43:21",
+    age: 55,
+    dob: "16/09/1969",
+    insurance: "Non-Insurance",
+  },
+  {
+    id: "APT006",
+    patientName: "Kavitha Nair",
+    patientId: "#1298030",
+    avatar: "K",
+    dateTime: "2025-04-22T09:15:00",
+    age: 29,
+    dob: "03/07/1995",
+    insurance: "Prudential",
+  },
+  {
+    id: "APT007",
+    patientName: "Mohammed Aziz",
+    patientId: "#1298029",
+    avatar: "M",
+    dateTime: "2025-04-22T11:30:00",
+    age: 48,
+    dob: "22/11/1976",
+    insurance: "AIA",
+  },
+];
+
+export const MOCK_DOCTORS: DoctorSchedule[] = [
+  {
+    id: "D001",
+    name: "Dr. Priya Sharma",
+    specialty: "Anesthesiology",
+    status: "Available",
+    avatar: "P",
+  },
+  {
+    id: "D002",
+    name: "Dr. Rahul Nair",
+    specialty: "Cardiology",
+    status: "Unavailable",
+    avatar: "R",
+  },
+  {
+    id: "D003",
+    name: "Dr. Ananya Singh",
+    specialty: "Dermatology",
+    status: "Unavailable",
+    avatar: "A",
+  },
+  {
+    id: "D004",
+    name: "Dr. Suresh Iyer",
+    specialty: "Neurology",
+    status: "Available",
+    avatar: "S",
+  },
+  {
+    id: "D005",
+    name: "Dr. Meera Pillai",
+    specialty: "Pulmonology",
+    status: "Leave",
+    avatar: "M",
+  },
+];
+
+export const DOCTOR_SCHEDULE_STATS = {
+  available: 15,
+  unavailable: 11,
+  leave: 5,
+};

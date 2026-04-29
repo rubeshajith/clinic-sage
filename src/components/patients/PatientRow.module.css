@@ -1,0 +1,31 @@
+.row {
+  display: grid;
+  grid-template-columns: 2fr 0.7fr 1.5fr 1fr 1.5fr 1.2fr 0.6fr 0.8fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--neutral);
+  font-size: 0.85rem;
+  transition: background var(--transition);
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.row:hover { background: var(--neutral); }
+.row:last-child { border-bottom: none; }
+
+.identity { display: flex; align-items: center; gap: 10px; }
+.avatar {
+  width: 34px; height: 34px; border-radius: 99px;
+  background: #E8F5EE; color: var(--tertiary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem; font-weight: 600; flex-shrink: 0;
+}
+.identity strong { display: block; font-size: 0.875rem; }
+.identity span { font-size: 0.72rem; color: var(--secondary); }
+
+.ward, .doctor { font-size: 0.82rem; color: var(--secondary); }
+
+.vitals { display: flex; flex-direction: column; gap: 2px; font-size: 0.75rem; color: var(--secondary); }
+.alertVal { color: #C12B2B; font-weight: 600; }
+
+.blood { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: var(--secondary); }

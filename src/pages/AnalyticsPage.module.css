@@ -1,0 +1,142 @@
+.page {
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+}
+.header h1 {
+  font-size: 1.65rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.sub {
+  color: var(--secondary);
+  font-size: 0.875rem;
+  margin-top: 3px;
+}
+
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kpiLabel {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+.kpiVal {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.chartCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+}
+.chartCard h3 {
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+.chartSub {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  margin-bottom: 18px;
+}
+
+.statusList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 8px;
+}
+.statusItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.statusLabel {
+  width: 90px;
+}
+.barWrap {
+  flex: 1;
+  height: 8px;
+  background: var(--neutral);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.barFill {
+  height: 100%;
+  background: var(--tertiary);
+  border-radius: 99px;
+  transition: width 0.8s ease;
+}
+.statusCount {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  width: 24px;
+  text-align: right;
+}
+.dualDonut {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donutBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donutLabel {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .kpiRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

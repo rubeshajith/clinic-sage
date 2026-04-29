@@ -1,0 +1,51 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all var(--transition);
+  cursor: default;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.card:hover { box-shadow: var(--shadow-md); border-color: #c4d8cc; transform: translateY(-1px); }
+
+.header { display: flex; align-items: flex-start; gap: 10px; }
+.avatar {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  background: var(--neutral); color: var(--secondary);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.identity { flex: 1; min-width: 0; }
+.identity strong { display: block; font-size: 0.9rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.identity span { font-size: 0.72rem; color: var(--secondary); }
+
+.condition { display: flex; flex-direction: column; gap: 2px; }
+.condLabel { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--secondary); }
+.condition span:last-child { font-size: 0.875rem; font-weight: 500; }
+
+.meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px 0; border-top: 1px solid var(--neutral); border-bottom: 1px solid var(--neutral); }
+.metaItem { display: flex; flex-direction: column; gap: 2px; }
+.metaLabel { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+.metaItem span:last-child { font-size: 0.78rem; font-weight: 500; }
+
+.vitals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.vital {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--neutral); border-radius: var(--radius-sm);
+  padding: 7px 4px; gap: 2px;
+}
+.vital.vitalAlert { background: #FEE9E9; }
+.vitalKey { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+.vitalVal { font-size: 0.75rem; font-weight: 600; color: var(--primary); }
+.vital.vitalAlert .vitalVal { color: #C12B2B; }
+
+.footer { display: flex; align-items: center; justify-content: space-between; padding-top: 4px; }
+.bloodGroup, .phone {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.72rem; color: var(--secondary);
+}
