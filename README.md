@@ -43,8 +43,8 @@ Open: [http://localhost:5173](http://localhost:5173)
 - Doctor schedule panel (**Admin only**)
 - Deep linking:
   - Stats → filtered patient/doctor views
-  - Critical patients → scroll & highlight
-  - Doctor schedule list → scroll & highlight
+  - Critical patients → **scroll & highlight**
+  - Doctor schedule list → **scroll & highlight**
 
 ---
 
