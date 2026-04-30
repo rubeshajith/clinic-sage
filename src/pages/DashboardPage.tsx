@@ -145,7 +145,7 @@ export default function DashboardPage() {
               <h2>Critical Patients</h2>
               <button
                 className={styles.viewAll}
-                onClick={() => navigate("/patients?status=All")}
+                onClick={() => navigate("/patients?status=Critical")}
               >
                 View all <ArrowRight size={14} />
               </button>
