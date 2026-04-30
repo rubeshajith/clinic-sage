@@ -77,6 +77,26 @@ Open: [http://localhost:5173](http://localhost:5173)
 
 ---
 
+| Login                             |
+| --------------------------------- |
+| ![](public/screenshots/login.png) |
+
+| Dashboard                         |
+| --------------------------------- | --------------------------------- |
+| ![](public/screenshots/dash1.png) | ![](public/screenshots/dash2.png) |
+
+| Patient/Doctor                       |
+| ------------------------------------ | ------------------------------------ |
+| ![](public/screenshots/pat-list.png) | ![](public/screenshots/pat-grid.png) |
+
+| Analytics                        |
+| -------------------------------- | -------------------------------- |
+| ![](public/screenshots/ana1.png) | ![](public/screenshots/ana2.png) |
+
+| Alerts                            |
+| --------------------------------- |
+| ![](public/screenshots/alert.png) |
+
 ## 📁 Project Structure
 
 ```
