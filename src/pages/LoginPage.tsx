@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Activity, Eye, EyeOff, AlertCircle } from 'lucide-react';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { loginUser, clearError } from '../store/slices/authSlice';
-import styles from './LoginPage.module.css';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Activity, Eye, EyeOff, AlertCircle } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { loginUser, clearError } from "../store/slices/authSlice";
+import styles from "./LoginPage.module.css";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { loading, error, user } = useAppSelector(s => s.auth);
+  const { loading, error, user } = useAppSelector((s) => s.auth);
 
-  const [email, setEmail] = useState('doctor@clinicsage.com');
-  const [password, setPassword] = useState('clinic123');
+  const [email, setEmail] = useState("doctor@clinicsage.com");
+  const [password, setPassword] = useState("clinic123");
   const [showPass, setShowPass] = useState(false);
 
   useEffect(() => {
-    if (user) navigate('/dashboard');
+    if (user) navigate("/dashboard");
   }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(clearError());
     const result = await dispatch(loginUser({ email, password }));
-    if (loginUser.fulfilled.match(result)) navigate('/dashboard');
+    if (loginUser.fulfilled.match(result)) navigate("/dashboard");
   };
 
   return (
@@ -33,11 +33,22 @@ export default function LoginPage() {
           <span>Clinic Sage</span>
         </div>
         <div className={styles.tagline}>
-          <h1>Clinical calm.<br />Delivered clearly.</h1>
-          <p>A modern healthcare platform for clinical teams who care about clarity as much as outcomes.</p>
+          <h1>
+            Clinical calm.
+            <br />
+            Delivered clearly.
+          </h1>
+          <p>
+            A modern healthcare platform for clinical teams who care about
+            clarity as much as outcomes.
+          </p>
         </div>
         <div className={styles.stats}>
-          {[['1,240+', 'Patients managed'], ['98%', 'Uptime SLA'], ['24/7', 'Critical monitoring']].map(([num, label]) => (
+          {[
+            ["1,240+", "Patients managed"],
+            ["98%", "Uptime SLA"],
+            ["24/7", "Critical monitoring"],
+          ].map(([num, label]) => (
             <div key={label} className={styles.stat}>
               <span className={styles.statNum}>{num}</span>
               <span className={styles.statLabel}>{label}</span>
@@ -66,7 +77,7 @@ export default function LoginPage() {
               id="email"
               type="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="doctor@clinicsage.com"
               required
               autoComplete="email"
@@ -78,25 +89,32 @@ export default function LoginPage() {
             <div className={styles.passWrap}>
               <input
                 id="password"
-                type={showPass ? 'text' : 'password'}
+                type={showPass ? "text" : "password"}
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
                 autoComplete="current-password"
               />
-              <button type="button" className={styles.eyeBtn} onClick={() => setShowPass(p => !p)}>
+              <button
+                type="button"
+                className={styles.eyeBtn}
+                onClick={() => setShowPass((p) => !p)}
+              >
                 {showPass ? <EyeOff size={15} /> : <Eye size={15} />}
               </button>
             </div>
           </div>
 
           <button type="submit" className={styles.submit} disabled={loading}>
-            {loading ? <span className={styles.spinner} /> : 'Sign in'}
+            {loading ? <span className={styles.spinner} /> : "Sign in"}
           </button>
 
           <p className={styles.hint}>
-            Demo: <code>doctor@clinicsage.com</code> / <code>clinic123</code>
+            Admin Demo: <code>admin@clinicsage.com</code> /{" "}
+            <code>clinic123</code> <br />
+            Doctor Demo: <code>doctor@clinicsage.com</code> /{" "}
+            <code>clinic123</code>
           </p>
         </form>
       </div>
