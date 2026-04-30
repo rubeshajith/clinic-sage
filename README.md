@@ -1,6 +1,8 @@
-# 🌿 Clinic Sage — B2B Healthcare SaaS UI
+# 🌿 Clinic Sage — Healthcare SaaS Platform (Frontend Architecture)
 
-A modern, production-ready healthcare platform built with React, TypeScript, and Redux Toolkit. Featuring patient management, analytics, real-time notifications via Service Workers, and Firebase-ready authentication.
+**Designed with scalability, modularity, and production-readiness in mind.**
+
+Clinic Sage is a modern B2B healthcare platform built using **React, TypeScript, and Redux Toolkit**, featuring patient management, analytics dashboards, role-based access, and real-time notifications powered by Service Workers.
 
 ---
 
@@ -11,162 +13,257 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Open: [http://localhost:5173](http://localhost:5173)
 
-**Demo credentials:**
+### Demo Accounts
 
-- Email: `doctor@clinicsage.com`
-- Password: `clinic123`
+| Role   | Email                 | Password  |
+| ------ | --------------------- | --------- |
+| Admin  | admin@clinicsage.com  | clinic123 |
+| Doctor | doctor@clinicsage.com | clinic123 |
 
-- Email: `admin@clinicsage.com`
-- Password: `clinic123`
+---
+
+## 🧩 Core Modules
+
+### 🔐 Authentication
+
+- Login with validation and error handling
+- Role-based access control (**Admin / Doctor**)
+- Session persistence (mock + Firebase-ready)
+- Protected routes with automatic redirects
+
+---
+
+### 📊 Dashboard
+
+- KPI stats (patients, active, critical, recovery)
+- Critical patient & Ward occupancy
+- Appointments & doctor availability insights
+- Doctor schedule panel (**Admin only**)
+- Deep linking:
+  - Stats → filtered patient/doctor views
+  - Critical patients → scroll & highlight
+  - Doctor schedule list → scroll & highlight
+
+---
+
+### 🧑‍⚕️ Patients & Doctors
+
+- Grid & List views (responsive switching)
+- Search (name, ID, condition)
+- Status-based filtering
+- Highlight + scroll navigation from dashboard
+- Reusable entity components (card + row)
+
+---
+
+### 📈 Analytics
+
+- Built with **Recharts**
+- Area → Admissions vs Discharges
+- Bar → Critical trends
+- Pie / Donut → Distribution insights
+- Horizontal bars → Doctor workload (**Admin only**)
+
+---
+
+### 🔔 Notifications
+
+- Service Worker powered local notifications
+- Permission handling
+- Mark as read / mark all read
+- Simulated alerts for demo
 
 ---
 
 ## 📁 Project Structure
 
 ```
-clinic-sage/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   ├── common/
-│   │   │   └── ProtectedRoute.tsx       # Auth guard for routes
-│   │   ├── layout/
-│   │   │   ├── AppLayout.tsx            # Main shell (sidebar + outlet)
-│   │   │   ├── AppLayout.module.css
-│   │   │   ├── Sidebar.tsx              # Navigation sidebar
-│   │   │   └── Sidebar.module.css
-│   │   └── patients/
-│   │       ├── PatientCard.tsx          # Grid view card
-│   │       ├── PatientCard.module.css
-│   │       ├── PatientRow.tsx           # List view row
-│   │       ├── PatientRow.module.css
-│   │       ├── ViewToggle.tsx           # Grid/List toggle switch
-│   │       └── ViewToggle.module.css
-│   ├── hooks/
-│   │   └── redux.ts                     # Typed useAppDispatch / useAppSelector
-│   ├── pages/
-│   │   ├── LoginPage.tsx
-│   │   ├── DashboardPage.tsx
-│   │   ├── PatientsPage.tsx
-│   │   ├── AnalyticsPage.tsx
-│   │   └── NotificationsPage.tsx
-│   ├── store/
-│   │   ├── index.ts                     # Redux store configuration
-│   │   └── slices/
-│   │       ├── authSlice.ts             # Auth state + async thunks
-│   │       ├── patientSlice.ts          # Patient list, view mode, filters
-│   │       └── notificationSlice.ts     # Notification list + permission state
-│   ├── styles/
-│   │   └── global.css                   # Design tokens (CSS variables) + base styles
-│   ├── types/
-│   │   └── index.ts                     # All TypeScript interfaces
-│   ├── utils/
-│   │   ├── authService.ts               # Auth abstraction (swap mock → Firebase here)
-│   │   ├── mockData.ts                  # Patient + analytics seed data
-│   │   └── notifications.ts             # SW notification helpers
-│   ├── sw.ts                            # Service Worker (PWA)
-│   ├── App.tsx                          # Router + Provider setup
-│   └── main.tsx                         # Entry point
-├── index.html
-├── vite.config.ts
-├── tsconfig.json
-└── package.json
+src/
+├── components/           # Shared UI (layout, common, reusable entities)
+├── features/             # Domain modules (patients, doctors)
+├── pages/                # Route-level pages
+├── store/                # Redux Toolkit slices
+├── hooks/                # Typed Redux hooks
+├── utils/                # Services, Firebase, mock data
+├── styles/               # Global design system
+├── sw.ts                 # Service Worker
+└── App.tsx               # App entry (routing + providers)
 ```
 
 ---
 
----
+## 🧠 Architecture Overview
 
-## 🛠️ Available Scripts
+### Hybrid Feature-Oriented Design
 
-| Command           | Description                          |
-| ----------------- | ------------------------------------ |
-| `npm run dev`     | Start dev server at localhost:5173   |
-| `npm run build`   | Type-check + production build        |
-| `npm run preview` | Preview the production build locally |
+The application follows a **hybrid architecture** combining feature-based modules with route-level pages:
 
----
+#### Feature Modules (Domain-driven)
 
-## 📋 Features Checklist
+- `features/patients`
+- `features/doctors`
 
-- [x] Login page with form validation and error states
-- [x] Session persistence (via sessionStorage in mock, Firebase handles in prod)
-- [x] Protected routes — redirect to login if not authenticated
-- [x] Dashboard with stats, critical patient panel, recent patients table
-- [x] Patient list with **Grid View** and **List View**
-- [x] Toggle switch to switch between views
-- [x] Search patients by name, ID, or condition
-- [x] Filter by status (All / Active / Critical / Recovered / Discharged)
-- [x] Analytics page with Recharts (Area, Bar, Pie charts)
-- [x] Service Worker registered via vite-plugin-pwa
-- [x] Push notification permission request
-- [x] Local notifications via SW message passing
-- [x] Simulate alert button for demo purposes
-- [x] Mark notification as read / mark all read
-- [x] Redux Toolkit state management across all pages
-- [x] Fully responsive layout
-- [x] Clinic Sage design system (CSS variables, DM Sans, flat design)
-- [x] TypeScript throughout — zero `any` types
-
----
-
-## Architecture & Scalability
-
-The project currently follows a modular structure separating components, pages, and state.
-
-For scalability and micro-frontend readiness, the application can be refactored into a feature-based architecture:
-
-- features/auth
-- features/analytics
-- features/notifications
-
-Each feature would encapsulate:
+Each feature encapsulates:
 
 - UI components
-- state (Redux slice)
-- business logic
+- State (Redux slice)
+- Domain logic
 
-This enables future adoption of micro-frontend patterns such as Module Federation, where each feature can be independently developed and deployed.
+#### Page Modules (Route-level composition)
+
+- `pages/analytics`
+- `pages/notifications`
+- `pages/dashboard`
+
+These pages aggregate data and shared components rather than owning full feature boundaries.
+
+---
+
+### Why this approach?
+
+- Keeps routing simple and easy to scale
+- Avoids over-engineering for smaller modules
+- Allows gradual migration to full feature-based architecture
+
+---
+
+### Scalability Path
+
+If the application grows, remaining pages can be migrated into full feature modules:
+
+- `features/analytics`
+- `features/notifications`
+
+This ensures consistency and enables micro-frontend readiness without immediate complexity.
+
+---
+
+### State Management (Redux Toolkit)
+
+- `authSlice` → authentication & user session
+- `patientSlice` → list, filters, view mode
+- `notificationSlice` → notifications + read state
+
+---
+
+### Auth Abstraction (`authService.ts`)
+
+Provides a clean boundary between UI and backend:
+
+- Mock authentication for local dev
+- Firebase integration for production
+- Single swap point → no UI changes needed
+
+---
+
+## ⚡ Performance Considerations
+
+- `useMemo` for filtered patient lists
+- `React.memo` for row/card components
+- `useCallback` for stable handlers
+- Responsive fallback (grid enforced on small screens)
+
+#### Future Improvements
+
+- Virtualized lists (`react-window`) for large datasets
+- API caching via RTK Query
+- Code-splitting for route-level chunks
+
+---
+
+## 🧩 Micro-Frontend Readiness
+
+The current structure aligns with micro-frontend boundaries:
+
+### Potential Split
+
+- `patients-app`
+- `doctors-app`
+- `analytics-app`
+- `notifications-app`
+
+### Shared Modules
+
+- Design system (CSS tokens)
+- Auth layer
+- Layout shell
+
+This allows:
+
+- Independent deployments
+- Team ownership per feature
+- Reduced coupling
 
 ---
 
 ## 🎨 Design System
 
-All tokens are in `src/styles/global.css` as CSS variables:
+Defined using CSS variables in `global.css`:
 
-| Token         | Value     | Usage                         |
-| ------------- | --------- | ----------------------------- |
-| `--primary`   | `#1B3A2E` | Headlines, sidebar background |
-| `--secondary` | `#7A8F85` | Captions, borders, metadata   |
-| `--tertiary`  | `#4E8B6A` | CTAs, links, active states    |
-| `--neutral`   | `#F4F7F4` | Page background, hover fills  |
-| `--surface`   | `#FFFFFF` | Cards, panels                 |
+| Token         | Usage               |
+| ------------- | ------------------- |
+| `--primary`   | Headers, sidebar    |
+| `--secondary` | Metadata, captions  |
+| `--tertiary`  | CTAs, active states |
+| `--neutral`   | Backgrounds         |
+| `--surface`   | Cards, panels       |
+
+Typography: **DM Sans**  
+Style: Minimal, flat, clinical UI
 
 ---
 
-## 💡 Architecture Notes
-
-### Why `authService.ts` abstraction?
-
-Firebase is the real target, but you shouldn't need Firebase to develop locally. The abstraction layer means:
-
-- Zero Firebase calls during local dev (faster, no quota)
-- Single file to change when going to production
-- Easy to test — mock returns predictable data
-
-### Redux slice responsibilities
-
-- **`authSlice`** — user object, loading/error states, async login/logout thunks
-- **`patientSlice`** — patient list (could be replaced with RTK Query), view mode, search, filters
-- **`notificationSlice`** — notification items, unread count, SW permission state
-
-### Service Worker flow
+## 🔄 Service Worker Flow
 
 ```
-User action → sendLocalNotification() → SW receives 'message' event
-                                       → SW calls showNotification()
-                                       → Browser shows native notification
+User Action → sendLocalNotification()
+            → Service Worker receives message
+            → showNotification()
+            → Browser displays native notification
 ```
+
+---
+
+## 🛠️ Scripts
+
+| Command           | Description                   |
+| ----------------- | ----------------------------- |
+| `npm run dev`     | Start dev server              |
+| `npm run build`   | Type-check + production build |
+| `npm run preview` | Preview production build      |
+
+---
+
+## 📌 Key Highlights
+
+- Clean, scalable architecture
+- Role-based UI + route protection
+- Deep-link navigation between modules
+- Strong separation of concerns
+- Firebase-ready authentication
+- PWA-ready (Service Worker enabled)
+- Fully responsive design
+
+---
+
+## 🚧 Future Enhancements
+
+- Backend integration with real APIs
+- Role-based permissions at API level (RBAC)
+- Real-time updates via WebSockets
+- Dark mode / theme system
+- Advanced analytics (predictive insights)
+
+---
+
+## 📄 License
+
+For assessment/demo purposes only.
+
+---
+
+## 💬 Final Note
+
+This project focuses not just on UI implementation, but on **how a real-world SaaS frontend should be structured for scale, maintainability, and extensibility.**
