@@ -14,8 +14,8 @@ import {
   scheduleVitalAlert,
 } from "../utils/notifications";
 import { setPermissionGranted } from "../store/slices/notificationSlice";
-import AppointmentList from "../components/appointments/AppointmentList";
-import DoctorSchedule from "../components/doctors/DoctorSchedule";
+import AppointmentList from "../components/dashboard/AppointmentList";
+import DoctorSchedule from "../components/dashboard/DoctorSchedule";
 import styles from "./DashboardPage.module.css";
 import WardOccupancy from "../components/dashboard/WardOccupancy";
 
@@ -54,6 +54,10 @@ export default function DashboardPage() {
   const dispatch = useAppDispatch();
   const patients = useAppSelector((s) => s.patients.patients);
   const user = useAppSelector((s) => s.auth.user);
+  const role =
+    user?.email?.split("@")[0].toLocaleLowerCase() === "doctor"
+      ? "Doctor"
+      : "Admin";
 
   const active = patients.filter((p) => p.status === "Active").length;
   const critical = patients.filter((p) => p.status === "Critical").length;
@@ -86,7 +90,7 @@ export default function DashboardPage() {
     <div className={styles.page}>
       <div className={styles.header}>
         <div>
-          <h1>Welcome back, {user?.displayName?.split("@")[0] ?? "Doctor"}</h1>
+          <h1>Welcome back, {role}</h1>
           <p className={styles.date}>
             {new Date().toLocaleDateString("en-IN", {
               weekday: "long",
@@ -180,9 +184,13 @@ export default function DashboardPage() {
       )}
 
       {/* ── Appointments + Doctor Schedule ── */}
-      <section className={styles.bottomGrid}>
+      <section
+        className={
+          role === "Admin" ? styles.bottomGrid : styles.bottomGridDoctorOnly
+        }
+      >
         <AppointmentList />
-        <DoctorSchedule />
+        {role === "Admin" && <DoctorSchedule />}
       </section>
     </div>
   );

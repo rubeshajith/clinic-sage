@@ -112,7 +112,7 @@ export const MOCK_DOCTORS: DoctorSchedule[] = [
 ];
 
 export const DOCTOR_SCHEDULE_STATS = {
-  available: 15,
-  unavailable: 11,
-  leave: 5,
+  available: 6,
+  unavailable: 1,
+  leave: 1,
 };

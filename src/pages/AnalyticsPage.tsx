@@ -34,6 +34,11 @@ const COLORS = [
 
 export default function AnalyticsPage() {
   const patients = useAppSelector((s) => s.patients.patients);
+  const user = useAppSelector((s) => s.auth.user);
+  const role =
+    user?.email?.split("@")[0].toLocaleLowerCase() === "doctor"
+      ? "Doctor"
+      : "Admin";
 
   const statusCounts = {
     Active: patients.filter((p) => p.status === "Active").length,
@@ -221,29 +226,31 @@ export default function AnalyticsPage() {
       </div>
       <div className={styles.row}>
         {/* Doctor Workload */}
-        <div className={styles.chartCard}>
-          <h3>Doctor Workload</h3>
-          <p className={styles.chartSub}>Patients handled per doctor</p>
+        {role === "Admin" && (
+          <div className={styles.chartCard}>
+            <h3>Doctor Workload</h3>
+            <p className={styles.chartSub}>Patients handled per doctor</p>
 
-          <ResponsiveContainer width="100%" height={240}>
-            <BarChart
-              data={DOCTOR_WORKLOAD}
-              layout="vertical"
-              margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="#E8F0EC" />
-              <XAxis type="number" tick={{ fontSize: 11, fill: "#7A8F85" }} />
-              <YAxis
-                dataKey="name"
-                type="category"
-                tick={{ fontSize: 11, fill: "#7A8F85" }}
-                width={100}
-              />
-              <Tooltip />
-              <Bar dataKey="patients" fill="#4E8B6A" radius={[0, 6, 6, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+            <ResponsiveContainer width="100%" height={240}>
+              <BarChart
+                data={DOCTOR_WORKLOAD}
+                layout="vertical"
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#E8F0EC" />
+                <XAxis type="number" tick={{ fontSize: 11, fill: "#7A8F85" }} />
+                <YAxis
+                  dataKey="name"
+                  type="category"
+                  tick={{ fontSize: 11, fill: "#7A8F85" }}
+                  width={100}
+                />
+                <Tooltip />
+                <Bar dataKey="patients" fill="#4E8B6A" radius={[0, 6, 6, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
 
         {/* Demographics */}
         <div className={styles.chartCard}>

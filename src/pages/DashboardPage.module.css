@@ -259,6 +259,12 @@
   gap: 16px;
   margin-top: 8px;
 }
+.bottomGridDoctorOnly {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
 
 @media (max-width: 1100px) {
   .bottomGrid {

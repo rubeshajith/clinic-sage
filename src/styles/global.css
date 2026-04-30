@@ -1,12 +1,12 @@
 :root {
-  --primary: #1B3A2E;
-  --secondary: #7A8F85;
-  --tertiary: #4E8B6A;
-  --neutral: #F4F7F4;
-  --surface: #FFFFFF;
-  --on-primary: #FFFFFF;
-  --border: #D8E4DE;
-  --text-muted: #8FA89F;
+  --primary: #1b3a2e;
+  --secondary: #7a8f85;
+  --tertiary: #4e8b6a;
+  --neutral: #f4f7f4;
+  --surface: #ffffff;
+  --on-primary: #ffffff;
+  --border: #d8e4de;
+  --text-muted: #8fa89f;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -18,17 +18,28 @@
   --space-lg: 32px;
   --space-xl: 48px;
 
-  --shadow-sm: 0 1px 3px rgba(27,58,46,0.06), 0 1px 2px rgba(27,58,46,0.04);
-  --shadow-md: 0 4px 16px rgba(27,58,46,0.08), 0 2px 6px rgba(27,58,46,0.04);
-  --shadow-lg: 0 12px 40px rgba(27,58,46,0.12);
+  --shadow-sm:
+    0 1px 3px rgba(27, 58, 46, 0.06), 0 1px 2px rgba(27, 58, 46, 0.04);
+  --shadow-md:
+    0 4px 16px rgba(27, 58, 46, 0.08), 0 2px 6px rgba(27, 58, 46, 0.04);
+  --shadow-lg: 0 12px 40px rgba(27, 58, 46, 0.12);
 
-  --font: 'DM Sans', system-ui, sans-serif;
+  --font: "DM Sans", system-ui, sans-serif;
   --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
   font-family: var(--font);
@@ -39,24 +50,76 @@ body {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
 
 /* Typography */
-h1, h2, h3, h4, h5 { font-weight: 500; letter-spacing: -0.02em; color: var(--primary); }
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
 
 /* Focus ring */
-:focus-visible { outline: 2px solid var(--tertiary); outline-offset: 2px; border-radius: var(--radius-sm); }
+:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
 
 /* Fade-in animation */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes slideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
 
-.fade-in { animation: fadeIn 0.35s ease forwards; }
-.slide-in { animation: slideIn 0.3s ease forwards; }
+.fade-in {
+  animation: fadeIn 0.35s ease forwards;
+}
+.slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
 
 /* Status badges */
 .badge {
@@ -69,7 +132,27 @@ h1, h2, h3, h4, h5 { font-weight: 500; letter-spacing: -0.02em; color: var(--pri
   font-weight: 500;
   letter-spacing: 0.04em;
 }
-.badge--active    { background: #E8F5EE; color: #1B6B3E; }
-.badge--recovered { background: #EAF0FD; color: #2B52C1; }
-.badge--critical  { background: #FEE9E9; color: #C12B2B; }
-.badge--discharged{ background: #F0F0F0; color: #555; }
+.badge--active {
+  background: #e8f5ee;
+  color: #1b6b3e;
+}
+.badge--recovered {
+  background: #eaf0fd;
+  color: #2b52c1;
+}
+.badge--inactive {
+  background: #eaf0fd;
+  color: #2b52c1;
+}
+.badge--critical {
+  background: #fee9e9;
+  color: #c12b2b;
+}
+.badge--on-leave {
+  background: #fee9e9;
+  color: #c12b2b;
+}
+.badge--discharged {
+  background: #f0f0f0;
+  color: #555;
+}

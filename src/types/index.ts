@@ -2,9 +2,9 @@ export interface Patient {
   id: string;
   name: string;
   age: number;
-  gender: 'Male' | 'Female' | 'Other';
+  gender: "Male" | "Female" | "Other";
   condition: string;
-  status: 'Active' | 'Recovered' | 'Critical' | 'Discharged';
+  status: "Active" | "Recovered" | "Critical" | "Discharged";
   doctor: string;
   admittedDate: string;
   ward: string;
@@ -34,7 +34,7 @@ export interface AuthState {
 
 export interface PatientState {
   patients: Patient[];
-  viewMode: 'grid' | 'list';
+  viewMode: "grid" | "list";
   searchQuery: string;
   filterStatus: string;
   loading: boolean;
@@ -44,7 +44,7 @@ export interface NotificationItem {
   id: string;
   title: string;
   message: string;
-  type: 'alert' | 'info' | 'warning' | 'success';
+  type: "alert" | "info" | "warning" | "success";
   timestamp: string;
   read: boolean;
 }
@@ -59,4 +59,30 @@ export interface AnalyticsData {
   admissions: number;
   discharges: number;
   critical: number;
+}
+
+export interface Doctor {
+  id: string;
+  name: string;
+  age: number;
+  gender: "Male" | "Female";
+  specialty: string;
+  status: "Active" | "On Leave" | "Inactive";
+  department: string;
+  phone: string;
+  email: string;
+  experience: number; // in years
+  qualification: string;
+  patientsAssigned: number;
+  schedule: string;
+  joinedDate: string;
+  lastActive: string;
+}
+
+export interface DoctorState {
+  doctors: Doctor[];
+  viewMode: "grid" | "list";
+  searchQuery: string;
+  filterStatus: string;
+  loading: boolean;
 }

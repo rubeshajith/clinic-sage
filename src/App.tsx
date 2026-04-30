@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/common/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import PatientsPage from "./features/patients/page/PatientsPage";
+import DoctorsPage from "./features/doctors/page/DoctorsPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import "./styles/global.css";
@@ -61,6 +62,7 @@ function AppContent() {
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/patients" element={<PatientsPage />} />
+        <Route path="/doctors" element={<DoctorsPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
       </Route>
