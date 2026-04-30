@@ -77,24 +77,39 @@ Open: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-| Login                             |
-| --------------------------------- |
+## 📸 Screenshots
+
+### Login
+| Login |
+|------|
 | ![](public/screenshots/login.png) |
 
-| Dashboard                         |
-| --------------------------------- | --------------------------------- |
+---
+
+### Dashboard
+| Dashboard | Dashboard |
+|----------|----------|
 | ![](public/screenshots/dash1.png) | ![](public/screenshots/dash2.png) |
 
-| Patient/Doctor                       |
-| ------------------------------------ | ------------------------------------ |
+---
+
+### Patient / Doctor
+| List View | Grid View |
+|----------|----------|
 | ![](public/screenshots/pat-list.png) | ![](public/screenshots/pat-grid.png) |
 
-| Analytics                        |
-| -------------------------------- | -------------------------------- |
+---
+
+### Analytics
+| Chart 1 | Chart 2 |
+|--------|--------|
 | ![](public/screenshots/ana1.png) | ![](public/screenshots/ana2.png) |
 
-| Alerts                            |
-| --------------------------------- |
+---
+
+### Alerts
+| Alerts |
+|--------|
 | ![](public/screenshots/alert.png) |
 
 ## 📁 Project Structure
